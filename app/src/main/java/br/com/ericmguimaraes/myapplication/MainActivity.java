@@ -12,6 +12,7 @@ import android.view.View;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
+import com.microsoft.appcenter.distribute.Distribute;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,8 +32,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        AppCenter.start(getApplication(), "736e60b7-293b-4dff-8694-acff9185a92b",
+        String apikey = "736e60b7-293b-4dff-8694-acff9185a92b";
+        AppCenter.start(getApplication(), apikey,
                 Analytics.class, Crashes.class);
+
+        AppCenter.start(getApplication(), apikey, Distribute.class);
+        Distribute.setEnabled(true);
     }
 
     @Override
