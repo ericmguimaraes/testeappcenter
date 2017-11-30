@@ -36,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
         AppCenter.start(getApplication(), apikey,
                 Analytics.class, Crashes.class);
 
-        AppCenter.start(getApplication(), apikey, Distribute.class);
+        Distribute.setListener(new MyDistributeListener());
         Distribute.setEnabled(true);
+        AppCenter.start(getApplication(), apikey, Distribute.class);
     }
 
     @Override
